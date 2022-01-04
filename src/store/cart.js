@@ -12,6 +12,12 @@ export const cartReducer = (state = {}, action) => {
             const newState = {...state}
             delete newState[itemId]
             return newState
+        case INCREMENT_ITEM:
+            const incrementId = action.id;
+            const newStateAdd = {...state}
+            let count = newStateAdd.count
+            count += 1
+            return newStateAdd;
         default:
             return state;
     }
@@ -34,3 +40,12 @@ export const deleteItemFromCart = (id) => {
         id
     }
 };
+
+const INCREMENT_ITEM = 'cart/INCREMENT_ITEM'
+
+export const incrementItemInCart = (id) => {
+    return {
+        type: INCREMENT_ITEM,
+        id
+    }
+}
